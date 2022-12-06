@@ -1,0 +1,59 @@
+{
+  "extends": [
+    "plugin:prettier/recommended"
+  ],
+
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "plugins": ["prettier", "no-secrets", "deprecation"],
+
+  "rules": {
+    "no-secrets/no-secrets": [
+      "error",
+      {
+        "tolerance": 5,
+        "ignoreContent": "(^https://www.[(figma.com)(google.com)])|@"
+      }
+    ],
+    "prettier/prettier": "error",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          "!react-toastify"
+        ]
+      }
+    ],
+    "security/detect-object-injection": "off",
+    "deprecation/deprecation": "warn",
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "no-undef-init": "off",
+    "react/display-name": "off"
+  },
+
+  "overrides": [
+    {
+      "files": ["*.stories.tsx"],
+      "rules": {
+        "import/no-default-export": "off"
+      }
+    }
+  ]
+}
